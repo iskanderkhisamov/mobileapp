@@ -5,10 +5,10 @@ import {tap} from 'rxjs/operators';
 import {User} from '../models/user';
 
 @Component({
-  selector: 'app-tab5',
-  templateUrl: 'tab5.page.html',
-  styleUrls: ['tab5.page.scss']
+  selector: 'app-welcome',
+  templateUrl: 'welcome.page.html',
+  styleUrls: ['welcome.page.scss']
 })
-export class Tab5Page {
+export class WelcomePage {
 
 }

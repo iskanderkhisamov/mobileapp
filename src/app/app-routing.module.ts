@@ -3,8 +3,17 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'welcome',
+    loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomePageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'welcome',
+    pathMatch: 'full'
   },
   {
     path: 'login',

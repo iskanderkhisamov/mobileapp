@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {NativeStorage} from '@ionic-native/native-storage/ngx';
+import {Router, ActivatedRoute} from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {User} from '../models/user';
 
@@ -21,6 +22,8 @@ export class LoginPage {
   constructor(
     private http: HttpClient,
     private storage: NativeStorage,
+    private router: Router,
+    private route: ActivatedRoute,
   ) {
   }
 
@@ -55,6 +58,7 @@ export class LoginPage {
         );
       this.token = token;
       this.isLoggedIn = true;
+      this.next();
       return token;
     });
   }
@@ -74,5 +78,9 @@ export class LoginPage {
         this.isLoggedIn=false;
       }
     );
+  }
+
+  next() {
+    this.router.navigate(['../tabs'], {relativeTo: this.route});
   }
 }
