@@ -26,7 +26,23 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+  },
+  {
+    path: 'dialog',
+    loadChildren: () => import('./dialog/dialog.module').then( m => m.DialogPageModule)
+  },
+  {
+    path: 'update-profile',
+    loadChildren: () => import('./update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
+  },
+  {
+    path: 'update-avatar',
+    loadChildren: () => import('./update-avatar/update-avatar.module').then( m => m.UpdateAvatarPageModule)
   }
+
 ];
 @NgModule({
   imports: [

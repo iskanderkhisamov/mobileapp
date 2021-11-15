@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Component} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {NativeStorage} from '@ionic-native/native-storage/ngx';
 import {Router, ActivatedRoute} from '@angular/router';
-import {tap} from 'rxjs/operators';
-import {User} from '../models/user';
+
 
 @Component({
   selector: 'app-login',
@@ -11,12 +10,6 @@ import {User} from '../models/user';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  formUser = {
-    login: '',
-    password: '',
-  };
-
-  isLoggedIn = false;
   token: any;
 
   constructor(
@@ -28,16 +21,16 @@ export class LoginPage {
   }
 
   login(form) {
-    console.log(form.value.login);
-    console.log(form.value.password);
+    console.log('Логин', form.value.login);
+    console.log('Пароль', form.value.password);
     const login = form.value.login;
     const password = form.value.password;
     console.log('Залогинились');
     const body = {
-      "login": login,
-      "password": password,
+      login,
+      password,
     };
-    console.log(body);
+    console.log('body:', body.login, ' ', body.password);
     return this.http.post('http://studentapi.myknitu.ru/auth/',
       body,
       {
@@ -57,27 +50,8 @@ export class LoginPage {
           error => console.error('Ошибра при сохранении токена', error)
         );
       this.token = token;
-      this.isLoggedIn = true;
       this.next();
-      return token;
     });
-  }
-
-  getToken() {
-    return this.storage.getItem('token').then(
-      data => {
-        this.token = data;
-        if(this.token != null) {
-          this.isLoggedIn=true;
-        } else {
-          this.isLoggedIn=false;
-        }
-      },
-      error => {
-        this.token = null;
-        this.isLoggedIn=false;
-      }
-    );
   }
 
   next() {

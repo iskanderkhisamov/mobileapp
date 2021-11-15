@@ -13,23 +13,19 @@
       <ion-title size="large">Информация</ion-title>
     </ion-toolbar>
   </ion-header>
-  <form #form="ngForm" (ngSubmit)="getUser()" method="post" novalidate>
-    <ion-button type="submit" color="danger" expand="block">Получить информацию</ion-button>
-  </form>
+  <ion-button [routerLink]="['/update-profile']" color="primary" expand="block">Изменить информацию</ion-button>
+  <ion-button (click)="getUser()" color="primary" expand="block">Получить информацию</ion-button>
+  <ion-button (click)="message()" color="primary" expand="block">Контакты</ion-button>
   <ion-list>
     <ion-item>
       <ion-label>
-        <img src="{{user.img}}" alt="">
+        <img src="{{ user.img }}" alt="">
       </ion-label>
+      <ion-button [routerLink]="['/update-avatar']" color="primary" expand="block">Изменить фотограцию</ion-button>
     </ion-item>
     <ion-item>
       <ion-label>
-        Family: {{user.family}}
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        Birthday2: {{user.birthday2}}
+        Фамилия: {{user.family}}
       </ion-label>
     </ion-item>
     <ion-item>
@@ -39,12 +35,12 @@
     </ion-item>
     <ion-item>
       <ion-label>
-        Birthday: {{user.birthday}}
+        Дата рождения: {{user.birthday}}
       </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>
-        Phonenumber: {{user.phonenumber}}
+        Номер телефона: {{user.phonenumber}}
       </ion-label>
     </ion-item>
     <ion-item>
@@ -63,4 +59,5 @@
       </ion-label>
     </ion-item>
   </ion-list>
+  <ion-button [routerLink]="['/login']" color="danger" expand="block">Выйти из аккаунта</ion-button>
 </ion-content>
