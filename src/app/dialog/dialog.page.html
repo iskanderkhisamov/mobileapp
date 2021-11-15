@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Диалог</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngFor="let item of messages">
+    <ion-row *ngIf="item.from_id === myId">
+      <ion-col class="ion-float-left"></ion-col>
+      <ion-col class="ion-float-right">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ myName }}</ion-card-subtitle>
+            <ion-card-title>{{ item.message }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{ item.datetime }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="item.from_id === friendId">
+      <ion-col class="ion-float-left">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ friendName }}</ion-card-subtitle>
+            <ion-card-title>{{ item.message }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{ item.datetime }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-float-right"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="update()" color="primary" expand="block">Обновить</ion-button>
+    <ion-input placeholder="Написать сообщение..." (keyup.enter)="sendMessage()" [(ngModel)]="message"></ion-input>
+    <ion-icon (click)="sendMessage()" name="send" slot="end" padding></ion-icon>
+  </ion-toolbar>
+</ion-footer>

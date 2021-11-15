@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Изменить профиль</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <button (click) = "takeSnap()">Сделать фото</button>
+  <form #uploadbase64 = "ngForm" (ngSubmit) = "onClickSubmitBase64(uploadbase64.value)" enctype="multipart/form-data">
+    <textarea class="baseInput" name="cameraImage" [(ngModel)]="cameraImage"></textarea>
+    <input type="submit" value="Send">
+  </form>
+  <h4>Загрузка фото</h4>
+  <form #upload = "ngForm" (ngSubmit) = "onClickSubmit()" enctype="multipart/form-data">
+    <input type='file' name='image' (change)="fileProgress($event)">
+    <input type="submit" value="Send">
+  </form>
+</ion-content>
