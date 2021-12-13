@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Контакты</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-input placeholder="Найти пользователя по фамилии" (keyup.enter)="searchUsers()" [(ngModel)]="search"></ion-input>
+  <ion-list *ngFor="let user of users">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{user.img}}" alt="Аватар профиля">
+      </ion-avatar>
+      <ion-label>{{user.family}}</ion-label>
+      <ion-button (click)="messageToUser(user.id)" color="warning" expand="block">Открыть диалог</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
